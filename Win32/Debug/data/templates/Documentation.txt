@@ -1,0 +1,62 @@
+﻿;-----------------------------------------------------------------
+;[Example 0] Analysis engine file, based on example 1
+;-----------------------------------------------------------------
+[World]             ; Here we declare constants of this world
+C=4                 ; Number of objects, we must declare all! 
+G=6,67384           ; Gravitational constant 
+P=10                ; Factor in the equation
+T=1                 ; Accuracy of calculations (1 - max accuracy)
+I=10                ; Timer interval (1000 - one second)
+B=true              ; Background on\off
+Color=0xFF000000    ; Background color, black
+;-----------------------------------------------------------------
+[Obj1]              ; We declare an object 1					
+type=Planet         ; This is round particle
+name=Kerbol         ; Name ... I don't know what is it :)
+x=300               ; X coordinate
+y=250               ; Y coordinate
+vx=0                ; Velocity (speed) on the X axis
+vy=0                ; Velocity (speed) on the Y axis
+mass=2000           ; Object mass
+radius=20           ; Radius of the circle
+color=0xFFFFA500    ; Object color, this is orange, like orange
+interacts=0         ; Objects which act on this object, 0-nothing
+;-----------------------------------------------------------------
+[Obj2]              ; We declare an object 2
+type=Planet         ; Bla-bla-bla
+name=Kerbin         ; THIS IS ... KERBIN!
+x=450               ; This object slightly to the left from Kerbol
+y=250               ; The same Y, remember?
+vx=0                ; This object haven't any V on X axis
+vy=2,985            ; But have some V on Y, this object moves down
+mass=1000           ; Too big mass
+radius=5            ; But small radius, maybe ...
+color=0xFF0088FF    ; This is blue color
+interacts=1         ; Interacts ONLY with Kerbol, object 1
+;-----------------------------------------------------------------
+[Obj3]              ; We declare an object 3
+type=Planet         ; ...
+name=Minmus         ; This is the moon of Kerbin
+x=450               ; Bla
+y=220               ; Bla
+vx=3,9              ; some V on X axis
+vy=2,985            ; V Minmus = V Kerbin, else Minmus leave orbit
+mass=10             ; Small mass
+radius=2            ; And small radius
+color=0xFFCCCCCC    ; Gray color
+interacts=12        ; Interacts with Kerbol (Obj1) & Kerbin (Obj2)
+;-----------------------------------------------------------------
+[Obj4]              ; We declare an object 4, that's all
+type=Planet         ; ...
+name=Duna           ; It can be red
+x=300               ; ...
+y=20                ; ...
+vx=2,4              ; ...
+vy=0                ; ...
+mass=10             ; ...
+radius=5            ; ...
+color=0xFFFF4400    ; Some red-ginger
+interacts=1         ; Interacts ONLY with Kerbol (Obj1)
+;-----------------------------------------------------------------
+[END]               ; END, thanks cap
+;-----------------------------------------------------------------

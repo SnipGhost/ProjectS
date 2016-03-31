@@ -1,0 +1,35 @@
+object Layer: TLayer
+  Left = 0
+  Top = 0
+  ClientHeight = 500
+  ClientWidth = 700
+  Visible = False
+  StyleLookup = 'backgroundstyle'
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = Timer1Timer
+    Left = 8
+    Top = 8
+  end
+  object Panel1: TPanel
+    Align = alFitRight
+    Position.Point = '(632,0)'
+    Width = 68.000000000000000000
+    Height = 500.000000000000000000
+    TabOrder = 3
+    object Button1: TButton
+      Align = alCenter
+      Position.Point = '(12,235)'
+      Width = 44.000000000000000000
+      Height = 30.000000000000000000
+      Margins.Rect = '(10,10,10,0)'
+      OnClick = Button1Click
+      TabOrder = 1
+      Font.Family = 'System'
+      Font.Size = 12.000000000000000000
+      Font.Style = [fsBold]
+      Text = '>'
+    end
+  end
+end

@@ -1,0 +1,23 @@
+object Layer: TLayer
+  Left = 0
+  Top = 0
+  ClientHeight = 500
+  ClientWidth = 700
+  Visible = False
+  StyleLookup = 'backgroundstyle'
+  object Button1: TButton
+    Position.Point = '(616,472)'
+    Width = 80.000000000000000000
+    Height = 22.000000000000000000
+    OnClick = Button1Click
+    TabOrder = 0
+    Text = 'Start'
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = Timer1Timer
+    Left = 8
+    Top = 8
+  end
+end

@@ -1,0 +1,60 @@
+object Layer: TLayer
+  Left = 0
+  Top = 0
+  ClientHeight = 500
+  ClientWidth = 700
+  Visible = False
+  StyleLookup = 'backgroundstyle'
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = Timer1Timer
+    Left = 664
+    Top = 8
+  end
+  object Panel: TCalloutPanel
+    Position.Point = '(104,440)'
+    Width = 592.000000000000000000
+    Height = 49.000000000000000000
+    TabOrder = 3
+    CalloutWidth = 23.000000000000000000
+    CalloutLength = 11.000000000000000000
+    CalloutPosition = cpRight
+    object Button1: TCornerButton
+      Position.Point = '(496,14)'
+      Width = 64.000000000000000000
+      Height = 22.000000000000000000
+      OnClick = Button1Click
+      TabOrder = 1
+      Text = 'Start'
+      XRadius = 10.000000000000000000
+      YRadius = 10.000000000000000000
+      Sides = [sdTop, sdLeft, sdBottom, sdRight]
+    end
+    object Button2: TCornerButton
+      Position.Point = '(424,14)'
+      Width = 64.000000000000000000
+      Height = 22.000000000000000000
+      OnClick = Button2Click
+      TabOrder = 2
+      Text = 'Load'
+      XRadius = 10.000000000000000000
+      YRadius = 10.000000000000000000
+      Sides = [sdTop, sdLeft, sdBottom, sdRight]
+    end
+    object Label1: TLabel
+      Position.Point = '(20,19)'
+      Width = 397.000000000000000000
+      Height = 15.000000000000000000
+      TabOrder = 3
+      Font.Size = 12.000000000000000000
+      Text = 'C:\Users\Misha\Documents\RAD Studio\Project S\Win32\Debug\DDDD'
+      WordWrap = False
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = '*.s.ini'
+    Left = 608
+    Top = 8
+  end
+end

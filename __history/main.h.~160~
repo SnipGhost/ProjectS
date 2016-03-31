@@ -1,0 +1,101 @@
+//---------------------------------------------------------------------------
+
+#ifndef mainH
+#define mainH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Types.hpp>
+#include <Xml.Win.msxmldom.hpp>
+#include <Xml.XMLDoc.hpp>
+#include <Xml.xmldom.hpp>
+#include <Xml.XMLIntf.hpp>
+#include <FMX.Colors.hpp>
+#include <FMX.ListBox.hpp>
+#include <System.UIConsts.hpp>
+//---------------------------------------------------------------------------
+#include <vector.h>
+//---------------------------------------------------------------------------
+class SWorld            // Options of the simulated world
+{
+ public:
+	float G;			// gravitational constant
+	float P;			// factor in the equation
+	int   T;			// accuracy of calculations
+	int	  I;            // timer interval
+	int	  C;            // the number of objects
+	bool  B;			// background draw on\off
+	TColor background;  // background color
+};
+//---------------------------------------------------------------------------
+class SObject				   // Standart object - BASE class
+{
+ public:
+	float x, y;					// coordinates of the center of mass
+	float vx, vy;				// velocity (speed) on the X and Y axis
+	float mass;     			// object mass value
+	UnicodeString name;			// object unique name
+	vector<SObject*> inter;   	// vector of interacting objects (only index)
+	void Draw(TCanvas *Canvas)	// draw point to canvas
+	{
+	 //Canvas->BeginScene();
+	 Canvas->Stroke->Kind = TBrushKind::bkSolid;
+	 Canvas->Fill->Color = claRed;
+	 Canvas->FillEllipse(TRectF(x-2, y-2, x+2, y+2), 1.0);
+	 //Canvas->EndScene();
+	}
+	void Move(float time)		// Change position due to the current speed
+	{
+	 x += vx * time;
+	 y += vy * time;
+	}
+	void Gravity(const SWorld &World, const SObject *Obj, float time)
+	{
+	 float r = sqrt((x - Obj->x)*(x - Obj->x)+(y - Obj->y)*(y - Obj->y));
+	 float a = (World.G * (Obj->mass / (r*r))) / World.P;
+	 float sina = (x - Obj->x) / r;
+	 float cosa = (y - Obj->y) / r;
+	 vx = vx - a * sina * time;
+	 vy = vy - a * cosa * time;
+	}
+	void Interact(const SWorld &World, float time)
+	{
+	 for (int i = 0; i < inter.size(); i++) { Gravity(World, inter[i], time); }
+	}
+};
+//---------------------------------------------------------------------------
+class SCircle : public SObject	// Round particle (Planet) object
+{
+ public:
+	float radius;				// circle radius
+	unsigned int color;     	// circle color
+	void Draw(TCanvas *Canvas)	// draw circle to canvas
+	{
+	 //Canvas->BeginScene();
+	 Canvas->Stroke->Kind = TBrushKind::bkSolid;
+	 Canvas->Fill->Color = color;
+	 Canvas->FillEllipse(TRectF(x-radius, y-radius, x+radius, y+radius), 1.0);
+	 //Canvas->EndScene();
+	}
+};
+//---------------------------------------------------------------------------
+class TLayer : public TForm
+{
+__published:	// IDE-managed Components
+	TTimer *Timer1;
+	TButton *Button1;
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TLayer(TComponent* Owner);
+	AnsiString Dir;
+	SWorld World;
+	void SetDir(bool TheDir)
+	{if (TheDir) Dir = GetCurrentDir() + "\\data";}
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TLayer *Layer;
+//---------------------------------------------------------------------------
+#endif

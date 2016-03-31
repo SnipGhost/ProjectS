@@ -1,0 +1,31 @@
+object Layer: TLayer
+  Left = 0
+  Top = 0
+  ClientHeight = 500
+  ClientWidth = 700
+  Visible = False
+  StyleLookup = 'backgroundstyle'
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = Timer1Timer
+    Left = 664
+    Top = 8
+  end
+  object CalloutPanel1: TCalloutPanel
+    Position.Point = '(560,424)'
+    Width = 136.000000000000000000
+    Height = 65.000000000000000000
+    TabOrder = 3
+    CalloutWidth = 23.000000000000000000
+    CalloutLength = 11.000000000000000000
+    CalloutPosition = cpRight
+    object SpeedButton1: TSpeedButton
+      Position.Point = '(24,24)'
+      Width = 88.000000000000000000
+      Height = 22.000000000000000000
+      TabOrder = 1
+      Text = 'SpeedButton1'
+    end
+  end
+end

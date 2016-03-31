@@ -1,0 +1,38 @@
+//---------------------------------------------------------------------------
+
+#ifndef mainH
+#define mainH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Types.hpp>
+#include <Xml.Win.msxmldom.hpp>
+#include <Xml.XMLDoc.hpp>
+#include <Xml.xmldom.hpp>
+#include <Xml.XMLIntf.hpp>
+#include <FMX.Colors.hpp>
+#include <FMX.ListBox.hpp>
+#include <System.UIConsts.hpp>
+//---------------------------------------------------------------------------
+#include "Engine.h"
+//---------------------------------------------------------------------------
+class TLayer : public TForm
+{
+__published:	// IDE-managed Components
+	TTimer *Timer1;
+	TButton *Button1;
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TLayer(TComponent* Owner);
+	AnsiString Dir;
+	SWorld World;
+	void SetDir(bool TheDir)
+	{if (TheDir) Dir = GetCurrentDir() + "\\data";}
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TLayer *Layer;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,78 @@
+object Layer: TLayer
+  Left = 0
+  Top = 0
+  ClientHeight = 500
+  ClientWidth = 700
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = Timer1Timer
+    Left = 8
+    Top = 8
+  end
+  object Panel: TCalloutPanel
+    Padding.Top = 11.000000000000000000
+    Position.X = 104.000000000000000000
+    Position.Y = 440.000000000000000000
+    Size.Width = 592.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    CalloutWidth = 23.000000000000000000
+    CalloutLength = 11.000000000000000000
+    CalloutPosition = Right
+    object Button1: TCornerButton
+      Position.X = 496.000000000000000000
+      Position.Y = 14.000000000000000000
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 64.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Start'
+      XRadius = 10.000000000000000000
+      YRadius = 10.000000000000000000
+      OnClick = Button1Click
+    end
+    object Button2: TCornerButton
+      Position.X = 424.000000000000000000
+      Position.Y = 14.000000000000000000
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 64.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Load'
+      XRadius = 10.000000000000000000
+      YRadius = 10.000000000000000000
+      OnClick = Button2Click
+    end
+    object Label1: TLabel
+      Position.X = 20.000000000000000000
+      Position.Y = 19.000000000000000000
+      Size.Width = 397.000000000000000000
+      Size.Height = 15.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.WordWrap = False
+      Text = 'C:\Users\Misha\Documents\RAD Studio\Project S\Win32\Debug\DDDD'
+    end
+  end
+  object Label2: TLabel
+    Position.X = 664.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 33.000000000000000000
+    Size.Height = 15.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'v0.2.1'
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = '*.s.ini'
+    Left = 64
+    Top = 8
+  end
+end
